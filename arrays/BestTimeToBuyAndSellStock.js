@@ -1,4 +1,20 @@
-function twoSum(prices){
+//brute force approach
+
+// O(n^2)
+function bestTimeToBuyAndSellStock(prices) {
+    let maxProfit = 0;
+    for (let i = 0; i < prices.length; i++) {
+        for (let j = i + 1; j < prices.length; j++) {
+            let profit = prices[j] - prices[i];
+            maxProfit = Math.max(maxProfit, profit);
+        }
+    }
+    return maxProfit;
+}
+
+
+//optimal approach O(n)
+function twoSum(prices) {
   
   let maxProfit=0;
   let buyPrice=prices[0];
