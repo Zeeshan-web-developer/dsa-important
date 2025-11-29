@@ -26,7 +26,6 @@ var threeSum = function (nums) {
 }
 
 
-//optimal approach O(n^2)
 
 var threeSum = function (nums) {
     nums.sort((a, b) => a - b); // Sort the array to use two-pointer technique

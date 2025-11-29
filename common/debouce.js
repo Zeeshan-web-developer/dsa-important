@@ -1,19 +1,20 @@
 
-function debounce(fn,delay){
-  let timer="";
-  
-  return function(){
-    clearTimeout(timer)
-    timer=setTimeout(function(...args) {
-      fn.apply(this.arg)
+
+function debounce(fn, delay) {
+   let timer = null;
+  return function (...args) {
+    clearTimeout(timer);
+
+    timer = setTimeout(() => {
+      fn.apply(this, args);
     }, delay);
-  }
+  };
 }
 
-
-let search=debounce(function(){
-  console.log("Searching")
+function searching(...args) {
+  console.log("Searching", ...args);
 }
-    , 3000)
 
-search()
+let search = debounce(searching, 3000);
+
+search("JavaScript","hello");     

@@ -1,28 +1,30 @@
-//Count occurrences of each element in an array
+//Count occurrences of each element in an array and  return maximum occurring element
 
-const arr = [1, 2, 2, 3, 4, 4, 4, 5, 1, 2, 3, 4, 5, 5, 5, 5];
-
-// function countOccurrences(array) {
-//     const occurrenceMap = {};
-
-//     for (let i = 0; i < array.length; i++) {
-//         const element = array[i];
-//         if (occurrenceMap[element]) {
-//             occurrenceMap[element]++;
-//         } else {
-//             occurrenceMap[element] = 1;
-//         }
-//     }
-
-//     return occurrenceMap;
-// }
+const arr = ["a","b","c","b","a","a","c","f","b","a","b","a"];
 
 
 function occurences(arr){
-  let map={};
-  for(let i=0;i<arr.length;i++){
-    map[arr[i]]=map[arr[i]]+1||1
+  let map = {};
+  let maxCountChar=0;
+  for (let i = 0; i < arr.length; i++){
+    let char=arr[i];
+    if(map[char]){
+      map[char]++;
+    }else{
+      map[char]=1;
+    }
+    if(map[char]>maxCount){
+      maxCountChar=char;
+    }
   }
-  return map;
+  let obj = {
+    char: maxCountChar,
+    count: map[maxCountChar]
+  }
+  return {
+    map,
+    obj
+
+  }
 }
 
