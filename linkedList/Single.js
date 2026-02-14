@@ -126,6 +126,8 @@ class SingleLinkedList {
             temp = temp.next
         }
     }
+
+    //return  the middle node data
     midNode() {
         let slow = this.head
         let fast = this.head

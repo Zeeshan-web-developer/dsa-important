@@ -34,7 +34,10 @@ function longestConsecutive(nums) {
   let max = 0;
 
   for (let num of set) {
-    // Only start from the beginning of a sequence
+    // 
+
+    //only start counting if num-1 is not present
+    //means we found the start of a sequence
     if (!set.has(num - 1)) {
       let current = num;
       let length = 1;

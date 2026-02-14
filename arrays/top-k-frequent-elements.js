@@ -88,7 +88,7 @@ Index 6: []  (unused)
     //fill the bucket array baesed on frequency map suppose if frequency of 1 is 3 then put 1 in bucket[3]
     //bucket index represents frequency
 
-    for (let [key, value] of map) {
+    for (let [key,value] of Object.entries(map)) {
         bucket[value].push(parseInt(key));
     }
 
