@@ -1,8 +1,3 @@
-
-
-
-
-
 const obj={
   name:"zeeshan",
   age:25,
@@ -25,9 +20,6 @@ const obj={
     }
   },
 }
-
-
-
 
 function flattenObj(){
   let result={}
@@ -52,3 +44,7 @@ function flattenObj(){
 }
 
 console.log(flattenObj(obj))
+
+
+
+
