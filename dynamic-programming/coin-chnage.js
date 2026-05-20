@@ -48,11 +48,11 @@ function coinChange(coins, amount) {
 
 //dynamic programming approach
 function coinChange(coins, amount) {
-    const dp = new Array(amount + 1).fill(Infinity);
+    const dp = new Array(amount + 1).fill(Infinity); //why fill with Infinity? because we want to find the minimum number of coins, so we initialize the dp array with Infinity to represent that initially, we assume it's impossible to make that amount. As we compute the minimum coins needed for each amount, we will update these values accordingly. If we find a valid combination of coins that can make up a certain amount, we will replace the Infinity with the actual number of coins needed. If after processing all coin denominations, dp[amount] remains Infinity, it means there is no valid combination of coins to make that amount, and we will return -1 in that case.
     dp[0] = 0; // Base case: no coins needed to make amount 0
 
     for (let i = 1; i <= amount; i++) {
-        for (let coin of coins) {
+        for (let coin of coins) { //this loop iterates through each coin denomination for the current amount i. It checks if the coin can be used to make up the amount by verifying if i - coin is a valid index (i.e., non-negative). If it is valid, it updates the dp[i] value to be the minimum of its current value and dp[i - coin] + 1 (which accounts for using one more coin).
             if (i - coin >= 0) { // Check if the coin can be used for the current amount ,suppose we are trying to make amount 3 and we have a coin of denomination 2, we can use that coin if 3 - 2 >= 0, which is true. This check ensures that we only consider valid coins that can contribute to the current amount. but if we have a coin of denomination 4, we cannot use it to make amount 3 because 3 - 4 < 0, so we skip that coin.
                 dp[i] = Math.min(dp[i], dp[i - coin] + 1); // +1 for the current coin
             }
