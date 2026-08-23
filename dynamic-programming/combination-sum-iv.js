@@ -20,7 +20,7 @@ function combinationSum4(nums, target) {
     return count;
 }
 
-// Example usage: nums = [1, 2], target = 3
+// Example usage: nums = [2,3], target = 11
 
 //dp approach
 function combinationSum4(nums, target) {
@@ -37,3 +37,17 @@ function combinationSum4(nums, target) {
 
     return dp[target];
 }
+
+//this formulla simlies like
+//if i have make 5 using 2,3
+  //dp[5] = dp[5-2] + dp[5-3] = dp[3] + dp[2] = 3 + 2 = 5
+//so to make 5 we have 5 ways using 2 and 3
+//basicilly we are reducing the target by each number in the nums array and adding the number of ways to make the reduced target to get the total number of ways to make the original target.
+
+// Example usage: nums = [2,3], target = 11 
+//formula first lets calucaet to make 0 is 1 because we can use no numbers to make 0
+//to make 1 we can use 1 so dp[1] = dp[0] = 1
+//to make 2 we can use 1+1 or 2 so dp[2] = dp[1] + dp[0] = 1 + 1 = 2
+//to make 3 we can use 1+1+1 or 1+2 or 2+1 so dp[3] = dp[2] + dp[1] = 2 + 1 = 3
+
+//time complexity O(n*m) where n is the target and m is the length of nums array.

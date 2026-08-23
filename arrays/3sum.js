@@ -31,7 +31,7 @@ var threeSum = function (nums) {
     nums.sort((a, b) => a - b); // Sort the array to use two-pointer technique
     const result = [];
 
-    for (let i = 0; i < nums.length; i++) {
+    for (let i = 0; i < nums.length-2; i++) {
         if (i > 0 && nums[i] === nums[i - 1]) continue; // Skip duplicate values for the first number
 
         let left = i + 1;

@@ -21,7 +21,7 @@ const obj={
   },
 }
 
-function flattenObj(){
+function flattenObj(obj){
   let result={}
   
   function flat(obj,parentKey){

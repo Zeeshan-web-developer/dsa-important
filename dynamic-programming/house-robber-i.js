@@ -29,6 +29,7 @@ console.log(rob([2, 7, 9, 3, 1])); // Output: 12 (rob house 1, house 3, and hous
 function rob(nums) {
     if (nums.length === 0) return 0; // Base case: no houses to rob
     if (nums.length === 1) return nums[0]; // Base case: only one house to rob
+    if (nums.length === 2) return Math.max(nums[0], nums[1]); // Base case: two houses, rob the one with more money
 
     const dp = new Array(nums.length).fill(0); // Create a dp array to store the maximum amount that can be robbed up to each house
     dp[0] = nums[0]; // Base case: maximum amount that can be robbed from the first house is the value of the first house

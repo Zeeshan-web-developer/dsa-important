@@ -13,12 +13,6 @@ Example 2:
 Input: s = "cbbd"
 Output: "bb"
  */
-
-
-/**
- * @param {string} s
- * @return {string}
- */
 var longestPalindrome = function(s) {
     
 let longest=0;
@@ -39,9 +33,22 @@ function expand(left,right){
 
 
     for(let i=0;i<s.length;i++){
-        expand(i,i)
-        expand(i,i+1)
+        expand(i,i) //for 
+        expand(i,i+1) //for even
     }
     return old;
     
 };
+
+// PALINDROME
+//                  |
+//         ---------------------
+//         |                   |
+//      ODD LENGTH         EVEN LENGTH
+//         |                   |
+//      "aba"                "abba"
+//         |                   |
+//     center is            center is
+//     ONE character        BETWEEN chars
+//         |                   |
+//     expand(i,i)          expand(i,i+1)

@@ -102,3 +102,17 @@ Index 6: []  (unused)
     }
     return result.slice(0, k); //in case we have more than k elements in result
 }
+
+//we cannot just use i>=k becuase in some we don't have any elemnent
+//bucket  viual example for nums = [1,1,1,2,2,3] (n=6):
+
+//Bucket array size = 7 (indices 0-6):
+// [[], [4], [2], [1,3], [], [], [] ]//it means 4 elements have frequency 1, 2 elements have frequency 2, and 1 and 3 have frequency 3. We can then iterate through the bucket array from the end to get the k most frequent elements efficiently without sorting the entire frequency map.
+
+
+//time complexity O(n) because we are doing linear passes through the input array and the bucket array. 
+// The sorting step is avoided by using the bucket sort approach.
+//O(n) -> creating frequency map
+//O(n) -> filling bucket array
+//O(n) -> collecting k most frequent elements from bucket array
+//total O(n) + O(n) + O(n) = O(n)

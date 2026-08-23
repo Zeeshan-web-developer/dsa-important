@@ -35,18 +35,20 @@ console.log(rob([1, 2, 3, 1])); // Output: 4 (rob house 1 and house 3)
 function rob(nums) {
     if (nums.length === 0) return 0; // Base case: no houses to rob
     if (nums.length === 1) return nums[0]; // Base case: only one house to rob
+    if (nums.length === 2) return Math.max(nums[0], nums[1]); // Base case: two houses, rob the one with more money
+    
 
     function robHelper(start, end) {
         const dp = new Array(end - start + 1).fill(0); // Create a dp array to store the maximum amount that can be robbed up to each house in the current range
         dp[0] = nums[start]; // Base case: maximum amount that can be robbed from the first house in the range is the value of that house
         dp[1] = Math.max(nums[start], nums[start + 1]); // Base case: maximum amount that can be robbed from the first two houses in the range is the maximum of the two house values
-
+ 
         for (let i = 2; i < dp.length; i++) {
             // choice 1 -> skip current house
             let skip = dp[i - 1];
 
             // choice 2 -> rob current house
-            let take = nums[start + i] + dp[i - 2];
+            let take = nums[start + i] + dp[i - 2]; //why start + i? because we are iterating through the range of houses defined by start and end, so to get the actual index of the current house in the original nums array, we need to add the current index i to the start index.
 
             dp[i] = Math.max(skip, take); // For each house in the range, the maximum amount that can be robbed is the maximum of either skipping the current house (dp[i - 1]) or robbing the current house and adding it to the maximum amount from two houses back (nums[start + i] + dp[i - 2])
         }

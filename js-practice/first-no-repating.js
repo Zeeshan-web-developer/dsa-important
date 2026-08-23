@@ -1,4 +1,4 @@
-//first non repeating character in a string
+//first non repeating character in a string or first unique character in a string
 
 let str = "leetcode"
 

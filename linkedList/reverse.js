@@ -42,10 +42,10 @@ class LinkedList{
         let next=null
     
         while(current!==null){
-        next=current.next
-        current.next=prev
-        prev=current
-        current=next
+        next=current.next // initially we have to store next , so we dont lose reference to the rest of the list after we change current.next to prev
+        current.next=prev // reverse the link and without losing previous reference, we can move forward in the list
+        prev=current // move prev and current one step forward
+        current=next // move current to next, which we stored at the beginning of the loop, so we can continue reversing the rest of the list
         }
         this.head=prev
     }

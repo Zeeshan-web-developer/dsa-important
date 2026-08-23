@@ -34,4 +34,25 @@ function twoSum(prices) {
 
 // space complexity O(1)
 
-console.log(twoSum([7,1,5,3,6,4]))
+console.log(twoSum([7, 1, 5, 3, 6, 4]))
+
+
+//sliding window approach
+
+function bestTimeToBuyAndSellStock(prices) {
+  let maxProfit = 0;
+  let left = 0; // buy
+  let right = 1; // sell
+
+  while (right < prices.length) {
+    if (prices[left] < prices[right]) {
+      let profit = prices[right] - prices[left];
+      maxProfit = Math.max(maxProfit, profit);
+    } else {
+      left = right; // move the left pointer to the right
+    }
+    right++; // move the right pointer to the right
+  }
+
+  return maxProfit;
+} 

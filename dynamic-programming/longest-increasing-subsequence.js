@@ -1,6 +1,13 @@
 //longest increasing subsequence
 // Given an array of integers, find the length of the longest increasing subsequence.
 
+
+//brute  force approach --using recursion
+
+
+
+
+ 
 function longestIncreasingSubsequence(arr) {
     if (arr.length === 0) {
         return 0; // Base case: empty array has a longest increasing subsequence of length 0
@@ -58,3 +65,39 @@ console.log(longestIncreasingSubsequence([10, 9, 2, 5, 3, 7, 101, 18])); // Outp
 // arr[i] = 18, 
 // compare with arr[0] = 10, arr[1] = 9, arr[2] = 2, arr[3] = 5, arr[4] = 3, arr[5] = 7, and arr[6] = 101, 18 is greater than 10, 9, 2, 5, 3, and 7 but not greater than 101, so dp[7] becomes max(dp[7], dp[0] + 1), max(dp[7], dp[1] + 1), max(dp[7], dp[2] + 1), max(dp[7], dp[3] + 1), max(dp[7], dp[4] + 1), and max(dp[7], dp[5] + 1) which is max(1, 1 + 1), max(1, 1 + 1), max(1, 1 + 1), max(1, 2 + 1), max(1, 2 + 1), and max(1, 3 + 1) = 4
 
+
+
+//time complexity: O(n^2) because we have two nested loops iterating through the input array.
+
+//new approach using binary search to achieve O(n log n) time complexity
+//we can maintain an array called tails where tails[i] is the smallest tail of all increasing subsequences with length i+1 in the input array. We can use binary search to find the correct position of each element in the tails array and update it accordingly. The length of the longest increasing subsequence will be the length of the tails array at the end.
+
+function longestIncreasingSubsequence(arr) {
+    if (arr.length === 0) {
+        return 0;
+    }
+    
+    const tails = [];
+    
+    for (let num of arr) {
+        let left = 0;
+        let right = tails.length;
+        
+        while (left < right) {
+            let mid = Math.floor((left + right) / 2);
+            if (tails[mid] < num) {
+                left = mid + 1;
+            } else {
+                right = mid;
+            }
+        }
+        
+        if (left < tails.length) {
+            tails[left] = num; // Update existing tail
+        } else {
+            tails.push(num); // Extend the tails array
+        }
+    }
+    
+    return tails.length; // The length of the tails array is the length of the longest increasing subsequence
+}

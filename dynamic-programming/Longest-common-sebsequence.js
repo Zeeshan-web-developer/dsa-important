@@ -49,7 +49,7 @@ function longestCommonSubsequence(text1, text2) {
     // Fill the dp array
     for (let i = 1; i <= m; i++) {
         for (let j = 1; j <= n; j++) {
-            if (text1[i - 1] === text2[j - 1]) {
+            if (text1[i - 1] === text2[j - 1]) { //why i-1 and j-1? because dp array is 1 indexed and text1 and text2 are 0 indexed, so to compare the characters at the current indices of both strings, we need to use i-1 and j-1 to access the correct characters in text1 and text2.
                 dp[i][j] = dp[i - 1][j - 1] + 1; // If characters match, take the diagonal value and add 1
             } else {
                 dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]); // If characters do not match, take the maximum of the left and top values

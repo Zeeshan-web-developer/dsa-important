@@ -54,12 +54,23 @@ function coinChange(coins, amount) {
     for (let i = 1; i <= amount; i++) {
         for (let coin of coins) { //this loop iterates through each coin denomination for the current amount i. It checks if the coin can be used to make up the amount by verifying if i - coin is a valid index (i.e., non-negative). If it is valid, it updates the dp[i] value to be the minimum of its current value and dp[i - coin] + 1 (which accounts for using one more coin).
             if (i - coin >= 0) { // Check if the coin can be used for the current amount ,suppose we are trying to make amount 3 and we have a coin of denomination 2, we can use that coin if 3 - 2 >= 0, which is true. This check ensures that we only consider valid coins that can contribute to the current amount. but if we have a coin of denomination 4, we cannot use it to make amount 3 because 3 - 4 < 0, so we skip that coin.
-                dp[i] = Math.min(dp[i], dp[i - coin] + 1); // +1 for the current coin
+                dp[i] = Math.min(dp[i], dp[i - coin] + 1); //why dp[i-coin] is bacsilly when we any coin , what is the reamaing amout --
+                
+                // +1 for the current coin
             }
         }
     }
 
     return dp[amount] === Infinity ? -1 : dp[amount]; // Return -1 if no solution found
+
+    //dp[i-coin] means basiclly if i use current coin  (isngle coin) what is the remaining amount i need to make and how many coins i need to make that remaining amount which is dp[i-coin] and then we add 1 for the current coin we are using
+    //sppose if i have make 9 ,if i use coin 5 a single coin, then remaing is 4,as we already calulcated 4
+    //+1 is for current coin
 }
 
 
+
+// amount to make we have two coins 1 and 2 and we want to make 3
+//if i use coin 1 
+//remaing is 2 -- we know from dp array to make 2 dp[2]=1 because we can use one coin of 2 to make 2
+//so to make 3 using coin 1 we need dp[2]+1 = 1+1 = 2 coins (one coin of 2 and one coin of 1)

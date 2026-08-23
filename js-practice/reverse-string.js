@@ -21,3 +21,23 @@ function reverseString3(str) {
     }
     return reversed
 }
+
+
+//reveerse words in a string
+let str="i love javascript"
+
+
+function reverseWords(){
+let arr=str.split(" ")
+let reversed=[];
+
+for(let i=arr.length-1;i>=0;i--){
+    reversed.push(arr[i])
+}
+console.log(reversed.join(" "))
+}
+
+//other way to reverse words in a string
+function reverseWords2(str){
+    return str.split(" ").reverse().join(" ")
+}
